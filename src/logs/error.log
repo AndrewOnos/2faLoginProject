@@ -1,0 +1,32 @@
+2025-05-02T05:13:34.944Z [error]: jwt expired
+2025-05-02T05:13:35.080Z [error]: jwt expired
+2025-05-02T05:13:53.797Z [error]: Error: user is not defined
+2025-05-02T05:13:53.821Z [error]: ReferenceError: user is not defined
+    at exports.login (C:\Users\andyo\2fa-authentication-system\src\controllers\authController.js:90:5)
+2025-05-02T05:13:56.285Z [error]: Error: invalid csrf token
+2025-05-02T05:13:56.300Z [error]: ForbiddenError: invalid csrf token
+    at csrf (C:\Users\andyo\2fa-authentication-system\node_modules\csurf\index.js:112:19)
+    at Layer.handleRequest (C:\Users\andyo\2fa-authentication-system\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:342:13)
+    at C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:297:9
+    at processParams (C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:582:12)
+    at next (C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:291:5)
+    at session (C:\Users\andyo\2fa-authentication-system\node_modules\express-session\index.js:487:7)
+    at Layer.handleRequest (C:\Users\andyo\2fa-authentication-system\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:342:13)
+    at C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:297:9
+2025-05-02T05:14:01.100Z [error]: Error: invalid csrf token
+2025-05-02T05:14:01.102Z [error]: ForbiddenError: invalid csrf token
+    at csrf (C:\Users\andyo\2fa-authentication-system\node_modules\csurf\index.js:112:19)
+    at Layer.handleRequest (C:\Users\andyo\2fa-authentication-system\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:342:13)
+    at C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:297:9
+    at processParams (C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:582:12)
+    at next (C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:291:5)
+    at session (C:\Users\andyo\2fa-authentication-system\node_modules\express-session\index.js:487:7)
+    at Layer.handleRequest (C:\Users\andyo\2fa-authentication-system\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:342:13)
+    at C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:297:9
+2025-05-02T08:17:35.835Z [error]: Error: user is not defined
+2025-05-02T08:17:35.931Z [error]: ReferenceError: user is not defined
+    at exports.login (C:\Users\andyo\2fa-authentication-system\src\controllers\authController.js:90:5)

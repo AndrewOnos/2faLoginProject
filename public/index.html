@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two-Factor Authentication Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .hidden {
+            display: none;
+        }
+        #qrCode {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .codes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .recovery-code {
+            font-family: monospace;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .warning {
+            color: #d9534f;
+            font-weight: bold;
+        }
+        #copyCodes, #printCodes {
+            background-color: #5bc0de;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Two-Factor Authentication Demo</h1>
+    
+    <!-- Registration Form -->
+    <div class="container">
+        <h2>Register</h2>
+        <form id="registerForm">
+            <div>
+                <label for="regUsername">Username:</label>
+                <input type="text" id="regUsername" required>
+            </div>
+            <div>
+                <label for="regEmail">Email:</label>
+                <input type="email" id="regEmail" required>
+            </div>
+            <div>
+                <label for="regPassword">Password:</label>
+                <input type="password" id="regPassword" required>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+    
+    <!-- Login Form -->
+    <div class="container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div>
+                <label for="loginEmail">Email:</label>
+                <input type="email" id="loginEmail" required>
+            </div>
+            <div>
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="loginPassword" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    
+    <!-- 2FA Verification Form (appears after login if 2FA is enabled) -->
+    <div class="container hidden" id="twoFactorForm">
+        <h2>Enter Verification Code</h2>
+        <p>Enter the 6-digit code from your authenticator app</p>
+        <form id="verifyTwoFactorForm">
+            <input type="hidden" id="userId">
+            <div>
+                <label for="twoFactorCode">Verification Code:</label>
+                <input type="text" id="twoFactorCode" required>
+            </div>
+            <button type="submit">Verify</button>
+        </form>
+    </div>
+    
+    <!-- Recovery Form -->
+    <div class="container hidden" id="recoveryForm">
+        <h2>Account Recovery</h2>
+        <p>If you can't access your authenticator app, enter a recovery code below:</p>
+        <form id="recoveryCodeForm">
+            <div>
+                <label for="recoveryCode">Recovery Code:</label>
+                <input type="text" id="recoveryCode" placeholder="XXXX-XXXX" required>
+            </div>
+            <button type="submit">Recover Account</button>
+        </form>
+    </div>
+    
+    <!-- Dashboard (appears after successful login) -->
+    <div class="container hidden" id="dashboard">
+        <h2>Dashboard</h2>
+        <p>Welcome <span id="userInfo"></span>! (<span id="userEmail"></span>)</p>
+        
+        <div id="setupTwoFactor">
+            <h3>Setup Two-Factor Authentication</h3>
+            <p>Enhance your account security with 2FA</p>
+            <button id="enableTwoFactorBtn">Enable Two-Factor Authentication</button>
+            
+            <div id="qrCode" class="hidden">
+                <p>Scan this QR code with your authenticator app:</p>
+                <img id="qrCodeImage" src="" alt="QR Code">
+                <p>Or enter this code manually:</p>
+                <code id="secretKey"></code>
+                
+                <form id="verifySetupForm">
+                    <div>
+                        <label for="setupVerificationCode">Verification Code:</label>
+                        <input type="text" id="setupVerificationCode" required>
+                    </div>
+                    <button type="submit">Verify and Enable</button>
+                </form>
+            </div>
+        </div>
+        
+        <div id="disableTwoFactor" class="hidden">
+            <h3>Two-Factor Authentication is Enabled</h3>
+            <p>Your account is protected with an additional layer of security.</p>
+            <button id="disableTwoFactorBtn">Disable Two-Factor Authentication</button>
+        </div>
+        
+        <div id="manageTwoFactor" class="hidden">
+            <h3>Manage Two-Factor Authentication</h3>
+            <p>You have <span id="recoveryCodesCount">0</span> recovery codes remaining.</p>
+            <button id="generateNewCodesBtn">Generate New Recovery Codes</button>
+            
+            <div id="recoveryCodesContainer" class="hidden">
+                <h4>Your Recovery Codes</h4>
+                <p class="warning">Save these codes in a safe place. They will not be shown again!</p>
+                <div id="recoveryCodes" class="codes-grid"></div>
+                <button id="copyCodes">Copy Codes</button>
+                <button id="printCodes">Print Codes</button>
+            </div>
+        </div>
+        
+        <hr>
+        <button id="logoutBtn">Logout</button>
+    </div>
+    
+    <!-- CSRF Token Script -->
+    <script>
+        // Global CSRF token
+        let csrfToken = '';
+        
+        // Fetch CSRF token
+        async function fetchCsrfToken() {
+            try {
+                const response = await fetch('/api/csrf-token');
+                const data = await response.json();
+                csrfToken = data.csrfToken;
+                console.log('CSRF token fetched');
+                return csrfToken;
+            } catch (error) {
+                console.error('Error fetching CSRF token:', error);
+                return null;
+            }
+        }
+        
+        // Fetch CSRF token on page load
+        fetchCsrfToken();
+    </script>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+2025-05-02T05:13:34.929Z [warn]: 2FA operation: GET /api/2fa/status from IP: ::1
+2025-05-02T05:13:34.944Z [error]: jwt expired
+2025-05-02T05:13:35.080Z [error]: jwt expired
+2025-05-02T05:13:53.540Z [warn]: Authentication attempt: POST /api/auth/login from IP: ::1
+2025-05-02T05:13:53.797Z [error]: Error: user is not defined
+2025-05-02T05:13:53.821Z [error]: ReferenceError: user is not defined
+    at exports.login (C:\Users\andyo\2fa-authentication-system\src\controllers\authController.js:90:5)
+2025-05-02T05:13:53.834Z [warn]: 2FA operation: GET /api/2fa/status from IP: ::1
+2025-05-02T05:13:53.902Z [warn]: 2FA operation: GET /api/2fa/status from IP: ::1
+2025-05-02T05:13:56.285Z [error]: Error: invalid csrf token
+2025-05-02T05:13:56.300Z [error]: ForbiddenError: invalid csrf token
+    at csrf (C:\Users\andyo\2fa-authentication-system\node_modules\csurf\index.js:112:19)
+    at Layer.handleRequest (C:\Users\andyo\2fa-authentication-system\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:342:13)
+    at C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:297:9
+    at processParams (C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:582:12)
+    at next (C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:291:5)
+    at session (C:\Users\andyo\2fa-authentication-system\node_modules\express-session\index.js:487:7)
+    at Layer.handleRequest (C:\Users\andyo\2fa-authentication-system\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:342:13)
+    at C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:297:9
+2025-05-02T05:14:01.100Z [error]: Error: invalid csrf token
+2025-05-02T05:14:01.102Z [error]: ForbiddenError: invalid csrf token
+    at csrf (C:\Users\andyo\2fa-authentication-system\node_modules\csurf\index.js:112:19)
+    at Layer.handleRequest (C:\Users\andyo\2fa-authentication-system\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:342:13)
+    at C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:297:9
+    at processParams (C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:582:12)
+    at next (C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:291:5)
+    at session (C:\Users\andyo\2fa-authentication-system\node_modules\express-session\index.js:487:7)
+    at Layer.handleRequest (C:\Users\andyo\2fa-authentication-system\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:342:13)
+    at C:\Users\andyo\2fa-authentication-system\node_modules\router\index.js:297:9
+2025-05-02T08:17:21.368Z [info]: MongoDB connected...
+2025-05-02T08:17:35.657Z [warn]: Authentication attempt: POST /api/auth/login from IP: ::1
+2025-05-02T08:17:35.835Z [error]: Error: user is not defined
+2025-05-02T08:17:35.931Z [error]: ReferenceError: user is not defined
+    at exports.login (C:\Users\andyo\2fa-authentication-system\src\controllers\authController.js:90:5)
+2025-05-02T08:17:35.957Z [warn]: 2FA operation: GET /api/2fa/status from IP: ::1
+2025-05-02T08:17:35.983Z [warn]: 2FA operation: GET /api/2fa/status from IP: ::1
+2025-05-02T08:17:39.788Z [warn]: 2FA operation: POST /api/2fa/generate from IP: ::1
+2025-05-02T08:17:40.058Z [info]: 2FA secret generated for user: andrew123@gmail.com
+2025-05-02T08:18:08.200Z [warn]: 2FA operation: POST /api/2fa/verify from IP: ::1
+2025-05-02T08:18:09.181Z [info]: 2FA enabled for user: andrew123@gmail.com
+2025-05-02T08:18:13.517Z [warn]: 2FA operation: GET /api/2fa/status from IP: ::1
+2025-05-02T08:18:34.619Z [warn]: 2FA operation: POST /api/2fa/generate-recovery-codes from IP: ::1
+2025-05-02T08:18:35.536Z [info]: New recovery codes generated for user: andrew123@gmail.com
+2025-05-02T08:18:49.659Z [warn]: 2FA operation: POST /api/2fa/disable from IP: ::1
+2025-05-02T08:18:49.680Z [info]: 2FA disabled for user: andrew123@gmail.com
+2025-05-02T08:18:51.140Z [warn]: 2FA operation: GET /api/2fa/status from IP: ::1
+2025-05-02T11:18:50.229Z [warn]: 2FA operation: POST /api/2fa/generate from IP: ::1
+2025-05-02T11:18:50.307Z [info]: 2FA secret generated for user: demouser@gmail.com
+2025-05-02T11:19:26.958Z [warn]: 2FA operation: POST /api/2fa/verify from IP: ::1
+2025-05-02T11:19:28.255Z [info]: 2FA enabled for user: demouser@gmail.com
+2025-05-02T11:19:40.587Z [warn]: 2FA operation: GET /api/2fa/status from IP: ::1
+2025-05-02T11:21:07.375Z [warn]: 2FA operation: POST /api/2fa/disable from IP: ::1
+2025-05-02T11:21:07.399Z [info]: 2FA disabled for user: demouser@gmail.com
+2025-05-02T11:21:08.997Z [warn]: 2FA operation: GET /api/2fa/status from IP: ::1
