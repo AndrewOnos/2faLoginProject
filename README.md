@@ -17,5 +17,5 @@ with excellent user experience.
 - Security: JWT, Speakeasy, Bcrypt, Argon2, Helmet.js
 
 # How to run locally
-npm install
-npm run dev
+- npm install
+- npm run dev
