@@ -16,3 +16,6 @@ with excellent user experience.
 - Frontend: React, HTML5, CSS3
 - Security: JWT, Speakeasy, Bcrypt, Argon2, Helmet.js
 
+# How to run locally
+npm install
+npm run dev
